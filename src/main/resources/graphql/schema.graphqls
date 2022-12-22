@@ -1,0 +1,37 @@
+type Query{
+    Tickets: [Ticket]
+    matchs : [Match]
+}
+type Mutation{
+    addTicket(TicketDTORequest : TicketDTORequest):Ticket
+    updateTicket(id: ID, TicketDTORequest :TicketDTORequest):Ticket
+    addmatch(MatchDTORequest :MatchDTORequest):Match
+}
+input  TicketDTORequest{
+    Reference:String
+    prix:String
+    Statut:Boolean
+}
+input MatchDTORequest{
+    ReferenceMatch:String
+    dateMatch:String
+    Lieu:String
+    Equipe1:String
+    Equipe2:String
+}
+type Match{
+    id:ID
+    ReferenceMatch:String
+    dateMatch:String
+    Lieu:String
+    Equipe1:String
+    Equipe2:String
+    Tickets:[Ticket]
+}
+type Ticket{
+    id:ID
+    Reference:String
+    prix:String
+    Statut:Boolean
+     match:Match
+}
